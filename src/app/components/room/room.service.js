@@ -105,10 +105,12 @@
     function doEnter(username) {
       var $$rootScope = $rootScope;
       var connection = null;
+      var opaqueId = "jangouts-"+username+"-"+Math.random().toString(36).substring(7);
 
       // Create new session
       that.janus.attach({
         plugin: "janus.plugin.videoroom",
+        opaqueId: opaqueId,
         success: function(pluginHandle) {
           // Step 1. Right after attaching to the plugin, we send a
           // request to join
